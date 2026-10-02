@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Merino Tech vs the field: ads and traffic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --page:#f2f4f1; --surface:#ffffff; --sunken:#f7f8f6;
+  --ink:#14211c; --ink2:#4c5a54; --muted:#7c8882; --line:#dde3de; --axis:#c3cbc6;
+  --b-mt:#2a78d6; --b-sw:#eb6834; --b-ib:#1baf7a; --b-wx:#eda100; --b-wy:#e87ba4; --b-mw:#008300; --b-rm:#4a3aa7;
+  --strong:#14211c; --g1:#9aa6a0; --g2:#c6cec9; --g3:#e2e7e3;
+  --o1:#b7d3f6; --o2:#6da7ec; --o3:#2a78d6; --o4:#184f95; --o5:#0d366b;
+  --oi1:#14211c; --oi2:#14211c; --oi3:#ffffff; --oi4:#ffffff; --oi5:#ffffff;
+  --good:#006300; --bad:#b3261e; --focus:#2a78d6;
+  --display:"Bricolage Grotesque","Schibsted Grotesk",system-ui,sans-serif;
+  --body:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    color-scheme:dark;
+    --page:#0f1614; --surface:#17201d; --sunken:#1c2623;
+    --ink:#f2f5f3; --ink2:#b9c4be; --muted:#84908a; --line:#2a3632; --axis:#3a4843;
+    --b-mt:#3987e5; --b-sw:#d95926; --b-ib:#199e70; --b-wx:#c98500; --b-wy:#d55181; --b-mw:#008300; --b-rm:#9085e9;
+    --strong:#f2f5f3; --g1:#74817b; --g2:#4c5a54; --g3:#33403b;
+    --o1:#184f95; --o2:#256abf; --o3:#3987e5; --o4:#86b6ef; --o5:#cde2fb;
+    --oi1:#f2f5f3; --oi2:#f2f5f3; --oi3:#0f1614; --oi4:#0f1614; --oi5:#0f1614;
+    --good:#3fc13f; --bad:#f08a80; --focus:#86b6ef;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;flex-direction:column;gap:8px;padding-top:10px;padding-bottom:10px}
+.bar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -6px}
+.bar nav::-webkit-scrollbar{display:none}
+.bar nav a{white-space:nowrap;text-decoration:none;font-size:14px;font-weight:500;color:var(--ink2);padding:4px 8px;border-radius:6px}
+.bar nav a:hover{color:var(--ink);background:var(--surface)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chips .lbl{font-size:13px;color:var(--muted);margin-right:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:500 13px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 10px 4px 8px;cursor:pointer}
+.chip i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="false"]{color:var(--muted);background:transparent}
+.chip[aria-pressed="false"] i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--muted)}
+
+/* hero */
+.hero{padding:56px 0 40px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:end}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.2vw,62px);line-height:1.02;letter-spacing:-0.025em;margin:0 0 20px;text-wrap:balance}
+.hero p{font-size:18px;color:var(--ink2);max-width:56ch;margin:0 0 12px}
+.hero .src{font-size:14px;color:var(--muted)}
+.hero figure{margin:0}
+figcaption,.cap{font-size:14px;color:var(--ink2);margin:0 0 10px;font-weight:600}
+.cap small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
+
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,36px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 10px;text-wrap:balance}
+h3{font-size:17px;font-weight:700;margin:0 0 6px}
+.lede{font-size:17px;color:var(--ink2);max-width:70ch;margin:0 0 26px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.panel.flat{background:transparent;border:0;padding:0}
+.take{font-size:15px;color:var(--ink2);margin:14px 0 0;max-width:68ch}
+.take b{color:var(--ink)}
+
+/* findings */
+.findings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.findings div{padding:20px;border-left:1px solid var(--line)}
+.findings div:first-child{border-left:0}
+.findings strong{display:block;font-family:var(--display);font-size:34px;line-height:1;letter-spacing:-0.02em;margin-bottom:8px}
+.findings span{font-size:14.5px;color:var(--ink2)}
+
+/* table */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{padding:10px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface)}
+thead th{font-weight:600;color:var(--ink2);font-size:13px;vertical-align:bottom;white-space:normal;min-width:86px}
+thead th button{all:unset;cursor:pointer;display:inline-flex;gap:4px;align-items:flex-end}
+thead th button:hover{color:var(--ink)}
+thead th[aria-sort] button::after{content:"▾";font-size:11px}
+thead th[aria-sort="ascending"] button::after{content:"▴"}
+tbody tr:last-child td{border-bottom:0}
+tr.focal td{background:color-mix(in srgb,var(--b-mt) 9%,var(--surface))}
+.bn{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.bn i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.up{color:var(--good)} .down{color:var(--bad)}
+details.data{margin-top:12px;font-size:13px}
+details.data summary{cursor:pointer;color:var(--muted)}
+details.data table{font-size:13px;margin-top:8px}
+details.data th:first-child,details.data td:first-child{position:static}
+
+/* charts */
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--body);fill:var(--ink2);font-size:12.5px}
+svg .v{fill:var(--ink);font-weight:600}
+svg .m{fill:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{font:500 13px var(--body);color:var(--ink2);background:none;border:0;padding:6px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink2);margin:0 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:3px;background:var(--c)}
+#tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:var(--surface);font-size:13px;line-height:1.4;padding:8px 10px;border-radius:8px;max-width:280px;opacity:0;transition:opacity .08s}
+#tip b{font-weight:700}
+.minis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.mini h4{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:8px}
+.mini h4 i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.mini p{margin:0 0 8px;font-size:13px;color:var(--muted)}
+
+/* sliders */
+.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:18px}
+.ctl label{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:4px}
+.ctl output{font-variant-numeric:tabular-nums;color:var(--b-mt)}
+.ctl input{width:100%;accent-color:var(--b-mt)}
+.ctl small{display:block;font-size:12.5px;color:var(--muted);line-height:1.4}
+
+/* matrix */
+.matrix td,.matrix th{text-align:center;padding:8px 6px}
+.matrix td:first-child,.matrix th:first-child{text-align:left;white-space:normal;min-width:220px}
+.matrix td small{display:block;color:var(--muted);font-size:12.5px;font-weight:400}
+.dot{display:inline-block;border-radius:50%;background:var(--o4);vertical-align:middle}
+.dot.d1{width:8px;height:8px;background:var(--o2)} .dot.d2{width:14px;height:14px;background:var(--o3)} .dot.d3{width:22px;height:22px;background:var(--o4)}
+.none{color:var(--g2)}
+.key{font-size:13px;color:var(--muted);display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.key span{display:inline-flex;gap:6px;align-items:center}
+
+/* profiles */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab{font:600 14px var(--body);display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);cursor:pointer}
+.tab i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.profile{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px}
+.profile dl{margin:0;display:grid;grid-template-columns:132px 1fr;gap:10px 16px;font-size:15px}
+.profile dt{color:var(--muted);font-size:14px}
+.profile dd{margin:0}
+.ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:6px 0 2px;position:relative}
+.ladder span{font-size:11.5px;color:var(--muted);text-align:center;padding-top:8px;border-top:3px solid var(--g3)}
+.ladder b{position:absolute;top:-5px;width:13px;height:13px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--surface);transform:translateX(-50%)}
+.quotes{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.quotes li{font-size:15px;padding:10px 12px;background:var(--sunken);border-radius:10px;border-left:3px solid var(--c)}
+.wf{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.wf ul{margin:6px 0 0;padding-left:18px;font-size:14.5px;color:var(--ink2)}
+.wf li{margin-bottom:6px}
+.wf h3{font-size:15px}
+
+/* recs */
+.recs{counter-reset:r;list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.recs li{counter-increment:r;display:grid;grid-template-columns:44px 1fr;gap:6px 14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.recs li::before{content:counter(r);font-family:var(--display);font-weight:700;font-size:30px;line-height:1;color:var(--b-mt);grid-row:span 2}
+.recs h3{margin:0}
+.recs p{margin:0;color:var(--ink2);font-size:15px;max-width:76ch}
+.sub{display:grid;gap:8px;margin-top:16px}
+.sub div{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:14.5px;padding:10px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.sub div.pick{border-color:var(--b-mt);background:color-mix(in srgb,var(--b-mt) 8%,var(--surface))}
+.sub b.n{font-family:var(--display);font-size:18px;color:var(--ink2)}
+.sub p{margin:0}.sub small{color:var(--muted);display:block}
+.note{font-size:14px;color:var(--ink2);background:var(--sunken);border-radius:12px;padding:14px 16px;max-width:86ch}
+.note li{margin-bottom:6px}
+footer{padding:28px 0 60px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:36px}
+  .grid2,.grid3,.profile,.wf,.controls{grid-template-columns:1fr}
+  .findings{grid-template-columns:1fr 1fr}
+  .findings div:nth-child(3){border-left:0}
+  .findings div:nth-child(n+3){border-top:1px solid var(--line)}
+  .minis{grid-template-columns:1fr 1fr}
+  .profile dl{grid-template-columns:1fr;gap:2px 0}.profile dd{margin-bottom:10px}
+}
+@media (max-width:520px){.minis,.findings{grid-template-columns:1fr}.findings div{border-left:0;border-top:1px solid var(--line)}.findings div:first-child{border-top:0}}
+</style>
+</head>
+<body>
+<div id="tip" role="status"></div>
+
+<header class="bar">
+  <div class="wrap">
+    <nav aria-label="Sections">
+      <a href="#scoreboard">Scoreboard</a><a href="#traffic">Traffic</a><a href="#volume">Ad volume</a><a href="#creative">Video vs static</a><a href="#winners">What lasts</a><a href="#funnel">Funnel</a><a href="#targeting">Targeting</a><a href="#spend">Ad spend</a><a href="#angles">Angles</a><a href="#profiles">Brand profiles</a><a href="#moves">Next moves</a><a href="#method">Method</a>
+    </nav>
+    <div class="chips" id="chips"><span class="lbl">Show</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Merino Tech is out-advertised 25 to 1, and it has no video in market.</h1>
+      <p>Six competitors, one question: where is the opening? Woolx runs 765 live ads to Merino Tech’s 30. The two brands that grew fastest on paid, Woolx and Woolly, sell to one specific person with one specific problem. Merino Tech still talks to everyone.</p>
+      <p class="src">TrendTrack data pulled 2 October 2026. Traffic runs to August 2026.</p>
+    </div>
+    <figure>
+      <figcaption>Live Meta ads right now<small>Unique ads landing on each brand’s own site</small></figcaption>
+      <div id="heroBars"></div>
+    </figure>
+  </div>
+
+  <div class="findings" id="findings"></div>
+
+  <section id="scoreboard">
+    <h2>The scoreboard</h2>
+    <p class="lede">Every headline number in one place. Select a column to sort. Merino Tech’s row is tinted.</p>
+    <div class="tablewrap"><table id="score"></table></div>
+    <p class="take">Estimated spend is modelled, not measured. See <a href="#spend">Ad spend</a> to change the assumptions.</p>
+  </section>
+
+  <section id="traffic">
+    <h2>Website visitors</h2>
+    <p class="lede">Smartwool and Icebreaker pull 15–17 times Merino Tech’s traffic. The closer comparisons are Woolly (1.6×), Ridge (3.7×) and Woolx (6.5×). Every brand peaks in November and December.</p>
+    <div class="panel">
+      <div class="row">
+        <p class="cap" id="trafficCap"></p>
+        <div class="seg" id="trafficMode" role="group" aria-label="Scale">
+          <button data-m="log" aria-pressed="true">Visits</button><button data-m="index" aria-pressed="false">Growth since Aug 2025</button>
+        </div>
+      </div>
+      <div id="trafficChart"></div>
+      <div id="trafficData"></div>
+    </div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="panel"><p class="cap">Visits, August 2026</p><div id="visitBars"></div></div>
+      <div class="panel"><p class="cap">Change vs August 2025<small>Icebreaker’s domain is global: only 32% of its visits are from the US</small></p><div id="yoyBars"></div></div>
+    </div>
+    <p class="take"><b>What it means.</b> Merino Tech grew 36% year on year from a small base, and its December is 2.6 times its August. The season is the lever: competitors start launching new ads in the first week of September, so creative has to be ready before the traffic arrives, not during it.</p>
+  </section>
+
+  <section id="volume">
+    <h2>Number of ads</h2>
+    <p class="lede">How many ads each brand keeps live, week by week since late February, and how fast it replaces them.</p>
+    <p class="cap">Ads running each week on the brand’s own Meta pages<small>Each chart has its own scale. The peak is labelled.</small></p>
+    <div class="minis" id="minis"></div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="panel"><p class="cap">New ads in the last 30 days<small>Unique live ads that started within 30 days</small></p><div id="newBars"></div></div>
+      <div class="panel"><p class="cap">Live ads per 10,000 monthly visitors<small>How hard each brand leans on paid creative for its size</small></p><div id="intensityBars"></div></div>
+    </div>
+    <p class="take"><b>What it means.</b> Woolx carries 21 live ads for every 10,000 visitors, Woolly 10, Merino Tech 5. Smartwool and Icebreaker replace almost everything monthly because they advertise product launches. Woolx tests constantly but also keeps what works. Merino Tech launched 10 ads in 30 days: too few to find a winner by testing.</p>
+  </section>
+
+  <section id="creative">
+    <h2>Video vs static</h2>
+    <p class="lede">The share of each brand’s live ads that are video, still images, or automated catalogue ads. Dynamic ads are counted by the media they actually contain.</p>
+    <div class="panel">
+      <div class="legend" id="mixLegend"></div>
+      <div id="mixChart"></div>
+      <div id="mixData"></div>
+    </div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="panel"><p class="cap">Typical video length<small>Median seconds across live video ads</small></p><div id="vidBars"></div></div>
+      <div class="panel">
+        <h3>Two kinds of video</h3>
+        <p class="take" style="margin-top:0">Smartwool, Icebreaker and Ridge run 8–11 second brand clips: scenery, product, logo. Woolx and Woolly run 23–29 second videos where a real person talks through a problem and a result. The second kind is the one that sells to cold traffic, and Merino Tech has neither.</p>
+        <p class="take">Woolx’s 519 videos are mostly vertical (9:16) and fronted by creators or by “Jenny from Woolx”, a persona page the brand runs ads from.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="winners">
+    <h2>What lasts</h2>
+    <p class="lede">Brands pay to keep an ad running only while it earns. So age is the best public sign of a winner, and many copies of one idea is the second best.</p>
+    <div class="panel">
+      <p class="cap">Age of live ads</p>
+      <div class="legend" id="ageLegend"></div>
+      <div id="ageChart"></div>
+      <div id="ageData"></div>
+    </div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="panel">
+        <h3>Ideas with the most variations</h3>
+        <ul class="quotes" id="winnersList" style="--c:var(--g1)"></ul>
+      </div>
+      <div class="panel">
+        <h3>Reading it</h3>
+        <p class="take" style="margin-top:0">Woolx has 149 ads older than six months. Its most-copied idea is a customer’s own sentence used as the headline. Icebreaker has one ad older than 90 days out of 197: “Well-travelled. Still fresh.”</p>
+        <p class="take">Half of Merino Tech’s 30 ads are 3–6 months old. That is not a bench of winners, it is a small set left running. Its oldest, “Stay Fresh, Stay Active”, has lasted 375 days, so the odor-and-freshness promise does work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="funnel">
+    <h2>Where the ads send people</h2>
+    <p class="lede">A product or collection page asks a stranger to buy straight away. A dedicated page explains the problem first. Woolly sends three in four ads to a page built for that angle.</p>
+    <div class="panel">
+      <div class="legend" id="lpLegend"></div>
+      <div id="lpChart"></div>
+      <div id="lpData"></div>
+    </div>
+    <div class="tablewrap" style="margin-top:20px"><table id="offerTable"></table></div>
+  </section>
+
+  <section id="targeting">
+    <h2>Targeting</h2>
+    <p class="lede">Meta only publishes age and gender for ads shown in the EU and UK, and TrendTrack returned none for these brands. So this is what can be seen: which countries, which identities the ads run from, and how much Google retargeting each brand does. Who they aim at has to be read from the creative, which the <a href="#profiles">brand profiles</a> cover.</p>
+    <div class="grid2">
+      <div class="panel"><p class="cap">Ads run through someone else’s identity<small>Creator, persona or publisher pages, and partnership-labelled ads</small></p><div id="creatorBars"></div></div>
+      <div class="panel"><p class="cap">Google ads live<small>Search, Shopping and YouTube combined</small></p><div id="googleBars"></div></div>
+    </div>
+    <div class="tablewrap" style="margin-top:20px"><table id="targetTable"></table></div>
+    <p class="take"><b>What it means.</b> Everyone but Icebreaker is fighting for the same US buyer. Woolx reaches her through 9 creator and publisher identities, so the ad arrives looking like a recommendation. Merino Tech runs every ad from its own logo.</p>
+  </section>
+
+  <section id="spend">
+    <h2>Potential ad spend</h2>
+    <p class="lede">Nobody outside the brand can see US ad spend. This is a range from two independent estimates. Move the sliders to match what you know about your own costs.</p>
+    <div class="panel">
+      <div class="controls">
+        <div class="ctl"><label for="cpv">Cost per paid visit <output id="cpvO"></output></label><input id="cpv" type="range" min="0.4" max="2.5" step="0.05" value="1.1"><small>Estimate A: monthly visits × share that is paid × this cost.</small></div>
+        <div class="ctl"><label for="shr">Paid share of traffic <output id="shrO"></output></label><input id="shr" type="range" min="0.5" max="1.5" step="0.05" value="1"><small>Scales each brand’s assumed paid share (Woolx 55%, Woolly 45%, Merino Tech 30%, Ridge 25%, Smartwool and Icebreaker 20%).</small></div>
+        <div class="ctl"><label for="pad">Spend per live ad per day <output id="padO"></output></label><input id="pad" type="range" min="5" max="60" step="1" value="15"><small>Estimate B: unique live Meta ads × this × 30 days.</small></div>
+      </div>
+      <p class="cap">Estimated monthly paid media spend<small>The bar spans the two estimates. A is the dot, B is the ring.</small></p>
+      <div id="spendChart"></div>
+      <div id="spendData"></div>
+    </div>
+    <p class="take"><b>The only measured figures.</b> For ads delivered in the EU and UK, TrendTrack prices the reach Meta reports at a $9 CPM: Icebreaker $161K on 17.9M reach, Smartwool $14.5K on 1.6M. The other brands don’t advertise there.</p>
+  </section>
+
+  <section id="angles">
+    <h2>Angles: who says what</h2>
+    <p class="lede">Each row is a message. A bigger dot means the brand leads with it across many live ads. Empty rows and empty columns are where nobody is talking.</p>
+    <div class="tablewrap"><table class="matrix" id="matrix"></table></div>
+    <div class="key"><span><i class="dot d3"></i> leads with it</span><span><i class="dot d2"></i> uses it often</span><span><i class="dot d1"></i> mentions it</span><span>Read from live ad copy and headlines. A judgement, not a count.</span></div>
+    <div class="grid2" style="margin-top:24px">
+      <div class="panel">
+        <p class="cap">How they sell, and to whom<small>Placement is a judgement from the ads</small></p>
+        <div id="mapChart"></div>
+      </div>
+      <div class="panel">
+        <h3>The gap on the map</h3>
+        <p class="take" style="margin-top:0">The three heritage brands sell outdoor performance through brand storytelling. Woolx and Woolly sell everyday life through direct response: a named problem, proof, an offer. Merino Tech sits in the middle doing neither fully.</p>
+        <p class="take">The bottom-right corner is empty. Nobody uses problem-first, proof-heavy advertising for people who are outside in the cold because they have to be. Merino Tech’s thermal sets and heavy 250–320 GSM layers already fit that corner.</p>
+        <p class="take">Merino Tech’s three strongest claims, temperature, odor and comfort, are the three most crowded rows. The message is true and everyone is saying it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="profiles">
+    <h2>Brand profiles</h2>
+    <p class="lede">The competitor framework applied to each brand: who they speak to, how aware that person is, the desire underneath, the mechanism, the proof, the offer, and what works and fails.</p>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="panel" id="profile"></div>
+  </section>
+
+  <section id="moves">
+    <h2>Next moves for Merino Tech</h2>
+    <p class="lede">Without a clearly superior product, the message has to be better, and a message can only be better for a specific person. Here is where to look, then what to do.</p>
+    <div class="grid2">
+      <div class="panel">
+        <p class="cap">Which person to speak to<small>Top-left is the target: strong desire, few brands talking</small></p>
+        <div id="subChart"></div>
+      </div>
+      <div class="panel flat">
+        <div class="sub" id="subList" style="margin-top:0"></div>
+      </div>
+    </div>
+    <p class="note" style="margin:18px 0 26px">These eight groups come from gaps in competitor ads, not from customer research. Before building on either highlighted pick, run the avatar deep dive: read the Reddit threads, Amazon reviews and Facebook groups where these people talk, and confirm the desire is as strong as it looks and that they can pay.</p>
+    <ol class="recs">
+      <li><h3>Choose one person and write only to them</h3><p>Start research on the two highlighted groups. Both have a strong daily pain, both are ignored by all six competitors, and both fit products already in the catalogue.</p></li>
+      <li><h3>Get video into market before November</h3><p>Zero of 30 ads are video. Brief 20–35 second creator videos where someone like the buyer names the problem in the first three seconds, the format Woolx runs 519 times.</p></li>
+      <li><h3>Use customers’ sentences as headlines</h3><p>Product pages already hold up to 599 reviews at 4.5–4.9 stars and Trustpilot shows 4.5. Woolx’s most-copied ad is a single review quote with the customer’s name.</p></li>
+      <li><h3>Build one page per angle</h3><p>Every Merino Tech ad lands on a collection or product page. Woolly’s education pages and bundle builders, and Woolx’s founder letter with cost-per-wear math, do the convincing before the price appears.</p></li>
+      <li><h3>Make the price the argument</h3><p>A 100% merino tee is $44.99 at Merino Tech and $85 at Woolx; an Icebreaker base layer is $120. The site has a comparison table. No ad uses it.</p></li>
+      <li><h3>Borrow other people’s faces</h3><p>Woolx runs ads from 9 creator, persona and publisher pages; Woolly from 2 creators and a third-party review site. An ad from a person reads as a recommendation.</p></li>
+      <li><h3>Test in volume, then keep the winners</h3><p>Ten new ads a month can’t find a winner. Aim for 10–15 new concepts a week through the season and leave the survivors running, as Woolx does with 149 ads past six months.</p></li>
+    </ol>
+  </section>
+
+  <section id="method">
+    <h2>Method and limits</h2>
+    <ul class="note">
+      <li><b>Source.</b> TrendTrack, pulled 2 October 2026 for all seven shops. Landing pages were read directly on each brand’s site the same day.</li>
+      <li><b>Visits</b> are TrendTrack’s monthly estimates. Treat them as relative sizes, not exact counts. The latest month available is August 2026.</li>
+      <li><b>Live ads</b> counts unique ads that land on the brand’s own site. TrendTrack’s page-level totals are higher because they count every placement variant, and for Woolx and Icebreaker they include publisher pages (Bustle, Vogue and others) whose other ads have nothing to do with the brand. Those were removed.</li>
+      <li><b>Video vs static</b> resolves dynamic ads by the media they contain. Catalogue ads are shown separately.</li>
+      <li><b>Targeting.</b> No age or gender data is available for these brands. Countries are from the ad records.</li>
+      <li><b>Spend</b> is modelled from visits and ad counts with the assumptions shown on the sliders. The EU figures are TrendTrack’s own estimate.</li>
+      <li><b>Angles, avatars, awareness levels and the two maps</b> are my reading of the live ad copy, headlines and landing pages. No video transcripts were available, so spoken hooks are not covered.</li>
+      <li><b>Meriwool</b> has no live ads on Meta or Google. It appears in traffic only.</li>
+    </ul>
+  </section>
+</main>
+<footer><div class="wrap">Prepared for Merino Tech. Competitor data from TrendTrack. Estimates are labelled where they appear.</div></footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
