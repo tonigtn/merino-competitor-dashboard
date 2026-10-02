@@ -30,8 +30,8 @@ const BRANDS = [
     offer: "Up to 20% off in ad copy, free shipping over $49.99, 20% off for newsletter signup. No bundle, guarantee or deadline in ads.",
     funnel: "Ad → collection page (53%) or product page (47%). No presell page.",
     hooks: ["Stay Fresh, Stay Active ✨ (12 ads, longest 375 days)","Say goodbye to heavy, uncomfortable fabrics.","Fewer clothes. More freedom.","Your Odor-Resistant Companion","45°F trailhead / 75°F patio. Same layer."],
-    works: ["One static has survived 375 days, so the basic promise (fresh, odor-free) does convert.","Lowest price in the set for 100% merino.","Instagram is growing fastest in the set (+10.5% in 30 days)."],
-    fails: ["Zero video. Every scaled competitor runs 36–68% video.","30 creatives in market against 85–765 for direct competitors.","Speaks to a general avatar, so the message matches what five bigger brands already say.","No urgency, no creator faces, no presell page."]
+    works: ["One static has survived 375 days, so the basic promise (fresh, odor-free) does convert.","Priced far below Woolx and Icebreaker: a $44.99 tee against $85, and against $120 for a base layer.","Instagram is growing fastest in the set (+10.5% in 30 days)."],
+    fails: ["Zero video. Every competitor with ads in market runs 20–68% video.","30 creatives in market against 85–765 for direct competitors.","Speaks to a general avatar, so the message matches what five bigger brands already say.","No urgency, no creator faces, no presell page."]
   },
   {
     id: "sw", name: "Smartwool", domain: "smartwool.com", slot: 2,
@@ -102,7 +102,7 @@ const BRANDS = [
     vidMedian: 29, creatorAds: 84, creatorPages: 9,
     lpMix: {collection: 263, product: 444, presell: 29, home: 15, other: 14},
     lpTop: [["/collections/womens-short-sleeve-merino-wool-tops",121],["/products/mia-v-neck-black",56],["/products/stella-leggings-black",42],["/collections/new-fall-drop",35]],
-    targetGeo: "US 83%. No EU delivery", google: {active: 55, total: 344, search: 125, youtube: 20, shopping: 26, retargetPct: 5},
+    targetGeo: "US 83%. No EU or UK ads", google: {active: 55, total: 344, search: 125, youtube: 20, shopping: 26, retargetPct: 5},
     eu: null, tiktokPosts: 974,
     weeklyRun: [608,628,588,318,282,281,296,342,340,374,389,439,501,502,441,380,422,512,485,426,472,489,560,512,519,582,538,640,661,590,742,796],
     weeklyNew: [34,41,147,89,107,163,55,174,277,116,90,101,95,70,385,139,113,296,214,96,133,103,183,77,88,141,53,177,95,114,222,131],

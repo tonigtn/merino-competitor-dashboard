@@ -62,7 +62,7 @@ a{color:inherit}
 .hero .src{font-size:14px;color:var(--muted)}
 .hero figure{margin:0}
 figcaption,.cap{font-size:14px;color:var(--ink2);margin:0 0 10px;font-weight:600}
-.cap small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
+figcaption small,.cap small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
 
 section{padding:44px 0;border-top:1px solid var(--line)}
 h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,36px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 10px;text-wrap:balance}
@@ -85,7 +85,8 @@ h3{font-size:17px;font-weight:700;margin:0 0 6px}
 /* table */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
 table{border-collapse:collapse;width:100%;font-size:14.5px}
-th,td{padding:10px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+th,td{padding:10px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+#score td,details.data td{font-variant-numeric:tabular-nums}
 th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface)}
 thead th{font-weight:600;color:var(--ink2);font-size:13px;vertical-align:bottom;white-space:normal;min-width:86px}
 thead th button{all:unset;cursor:pointer;display:inline-flex;gap:4px;align-items:flex-end}
@@ -94,7 +95,7 @@ thead th[aria-sort] button::after{content:"▾";font-size:11px}
 thead th[aria-sort="ascending"] button::after{content:"▴"}
 tbody tr:last-child td{border-bottom:0}
 tr.focal td{background:color-mix(in srgb,var(--b-mt) 9%,var(--surface))}
-.bn{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.bn{display:inline-flex;align-items:center;gap:8px;font-weight:600;white-space:nowrap}
 .bn i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
 .up{color:var(--good)} .down{color:var(--bad)}
 details.data{margin-top:12px;font-size:13px}
@@ -242,7 +243,7 @@ footer{padding:28px 0 60px;color:var(--muted);font-size:13.5px;border-top:1px so
   <section id="volume">
     <h2>Number of ads</h2>
     <p class="lede">How many ads each brand keeps live, week by week since late February, and how fast it replaces them.</p>
-    <p class="cap">Ads running each week on the brand’s own Meta pages<small>Each chart has its own scale. The peak is labelled.</small></p>
+    <p class="cap">Ads running each week on the brand’s own Meta pages<small>Each chart has its own scale. The peak is labelled. These counts include every placement variant, so they run higher than the unique-ad counts used elsewhere.</small></p>
     <div class="minis" id="minis"></div>
     <div class="grid2" style="margin-top:20px">
       <div class="panel"><p class="cap">New ads in the last 30 days<small>Unique live ads that started within 30 days</small></p><div id="newBars"></div></div>
@@ -358,7 +359,7 @@ footer{padding:28px 0 60px;color:var(--muted);font-size:13.5px;border-top:1px so
   <section id="moves">
     <h2>Next moves for Merino Tech</h2>
     <p class="lede">Without a clearly superior product, the message has to be better, and a message can only be better for a specific person. Here is where to look, then what to do.</p>
-    <div class="grid2">
+    <div class="grid2" style="align-items:start">
       <div class="panel">
         <p class="cap">Which person to speak to<small>Top-left is the target: strong desire, few brands talking</small></p>
         <div id="subChart"></div>

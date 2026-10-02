@@ -199,7 +199,7 @@ function tables() {
 /* ---------- angle matrix ---------- */
 function matrix() {
   const bs = ANGLE_BRANDS.filter(id => state.active.has(id));
-  $("#matrix").innerHTML = `<thead><tr><th>Message</th>${bs.map(id => `<th><span class="bn" style="--c:var(--b-${id})"><i></i>${byId[id].name}</span></th>`).join("")}<th>Brands using it</th></tr></thead><tbody>` +
+  $("#matrix").innerHTML = `<thead><tr><th>Message</th>${bs.map(id => `<th><span class="bn" style="--c:var(--b-${id})"><i></i>${byId[id].name}</span></th>`).join("")}<th>Brands leaning on it</th></tr></thead><tbody>` +
     ANGLES.map(a => { const vals = bs.map(id => a[2 + ANGLE_BRANDS.indexOf(id)]); return `<tr><td><b>${a[0]}</b><small>${a[1]}</small></td>${vals.map(v => `<td>${v ? `<i class="dot d${v}" title="${["", "mentions it", "uses it often", "leads with it"][v]}"></i>` : `<span class="none" aria-label="not used">·</span>`}</td>`).join("")}<td>${vals.filter(v => v >= 2).length} of ${bs.length}</td></tr>`; }).join("") + "</tbody>";
 }
 
@@ -251,7 +251,7 @@ function render() {
   const mt = byId.mt, wx = byId.wx;
   bars("#heroBars", b => b.ads, b => b.ads ? String(b.ads) : "none", { label: "Unique live Meta ads by brand", tip: b => `${b.ads} unique live ads (${b.pageLive} counting every variant on its own pages)` });
   $("#findings").innerHTML = [
-    [`${Math.round(wx.ads / mt.ads)}×`, `Woolx’s live ad count against Merino Tech’s: ${wx.ads} to ${mt.ads}.`],
+    [`${Math.floor(wx.ads / mt.ads)}×`, `Woolx’s live ad count against Merino Tech’s: ${wx.ads} to ${mt.ads}.`],
     ["0%", `of Merino Tech’s ads are video. Woolx is at ${pct(wx.videoShare)}, Smartwool ${pct(byId.sw.videoShare)}.`],
     [pct(byId.wy.presellShare), "of Woolly’s ads land on a page built for that angle. Merino Tech: none."],
     ["2", "groups with a strong daily pain that no competitor’s ads speak to."]
@@ -260,7 +260,7 @@ function render() {
   bars("#visitBars", b => b.visits, b => fmt(b.visits), { label: "Monthly visits August 2026", tip: b => `${b.visits.toLocaleString("en-US")} visits in Aug 2026. Peak month: ${fmt(b.peak)}` });
   bars("#yoyBars", b => b.yoy, b => b.yoy == null ? "–" : (b.yoy >= 0 ? "+" : "−") + pct(Math.abs(b.yoy)), { label: "Year on year change in visits", tip: b => `${fmt(b.traffic[YEAR_AGO])} in Aug 2025 → ${fmt(b.visits)} in Aug 2026` });
   bars("#newBars", b => b.new30, b => b.ads ? `${b.new30}` : "none", { label: "New ads in 30 days", tip: b => b.ads ? `${b.new30} of ${b.ads} live ads are under 30 days old (${pct(b.new30 / b.ads)}). ${b.new7} started this week.` : "No live ads" });
-  bars("#intensityBars", b => b.intensity, b => b.intensity.toFixed(1), { label: "Live ads per 10,000 visits", tip: b => `${b.ads} live ads on ${fmt(b.visits)} monthly visits` });
+  bars("#intensityBars", b => b.intensity, b => b.ads ? b.intensity.toFixed(1) : "none", { label: "Live ads per 10,000 visits", tip: b => `${b.ads} live ads on ${fmt(b.visits)} monthly visits` });
   bars("#vidBars", b => b.vidMedian, b => b.vidMedian ? b.vidMedian + " sec" : "no video", { label: "Median video length", filter: b => b.ads > 0, tip: b => b.vidMedian ? `${b.mix.video} live video ads, median ${b.vidMedian} seconds` : "No video ads live" });
   bars("#creatorBars", b => b.creatorAds, b => b.creatorAds ? `${b.creatorAds} ads` : "none", { label: "Ads run through creator or publisher identities", filter: b => b.ads > 0, tip: b => b.creatorAds ? `${b.creatorAds} of ${b.ads} live ads. ${b.pageNote}` : "All ads run from the brand’s own page" });
   bars("#googleBars", b => b.google.active, b => b.google.active ? fmt(b.google.active) : "none", { label: "Live Google ads", tip: b => `${b.google.active} live, ${b.google.total} seen in total. Search ${b.google.search}, YouTube ${b.google.youtube}, Shopping ${b.google.shopping}` });
